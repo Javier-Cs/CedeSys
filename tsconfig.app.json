@@ -1,5 +1,17 @@
 {
   "compilerOptions": {
+
+    // Configuración de alias para TypeScript
+    /*
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },*/
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
+
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "es2023",
     "lib": ["ES2023", "DOM"],
