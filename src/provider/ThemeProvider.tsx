@@ -1,9 +1,7 @@
-import { createContext, useCallback, useEffect, useMemo, useState, type PropsWithChildren } from "react";
-
-import type {ThemeContextType} from "@/context/ThemeContext";
+import { useCallback, useEffect, useMemo, useState, type PropsWithChildren } from "react";
 import type {Theme} from "@/types/theme";
 import {THEME_STORAGE_KEY} from "@/constante/themecons";
-
+import {ThemeContext} from "@/context/ThemeContext";
 
 
 
@@ -11,9 +9,9 @@ export function ThemeProvider({children}: PropsWithChildren) {
 
 
     // creacion de un estado para el tema, con valor inicial "system"
-    const [theme, setTheme] = useState(() => {
-        const saveTheme = localStorage.getItem(THEME_STORAGE_KEY) as Theme | null;
-        return saveTheme || "system";
+    const [theme, setTheme] = useState<Theme>(() => {
+        const savedTheme = localStorage.getItem(THEME_STORAGE_KEY) as Theme | null;
+        return savedTheme ?? "system";
     });
 
 
@@ -24,13 +22,15 @@ export function ThemeProvider({children}: PropsWithChildren) {
     
 
     // funcion para obtener el tema del localStorage
-    const isDark = theme === "dark" || (theme === "system" && getSystemDark());
+    const isDark = 
+        theme === "dark" || 
+        (theme === "system" && getSystemDark());
 
 
     // funcion para aplicar el tema dark o light al html
     const applyTheme = useCallback(() =>{
         document.documentElement.classList.toggle("dark", isDark);
-    }, [isDark]);
+    }, []);
     
 
     // creacion de toggleTheme para cambiar el tema de light a dark y viceversa
@@ -58,14 +58,36 @@ export function ThemeProvider({children}: PropsWithChildren) {
     }, [theme, applyTheme]);
 
 
-    // valor que se pasa al contexto, memoizado para evitar renderizados innecesarios
-    const value = useMemo(() => ({
-        theme,
-        isDark,
-        setTheme,
-        toggleTheme
 
-    }), [theme, isDark, toggleTheme]);
+    useEffect(() => {
+        if(theme !== "system") return;
+        const media = window.matchMedia("(prefers-color-scheme: dark)");
+
+        const handleChange = () => {
+            document.documentElement.classList.toggle(
+                "dark",
+                getSystemDark()
+            );
+            applyTheme();
+        };
+
+        media.addEventListener("change", handleChange);
+
+        return () => {
+            media.removeEventListener("change", handleChange);
+        };
+    }, [theme, applyTheme]);
+
+
+    // valor que se pasa al contexto, memoizado para evitar renderizados innecesarios
+    const value = useMemo(
+        () => ({
+            theme,
+            isDark,
+            setTheme,
+            toggleTheme
+        }), 
+        [theme, isDark, toggleTheme]);
 
     return (
         <ThemeContext.Provider value={value}>
@@ -76,5 +98,5 @@ export function ThemeProvider({children}: PropsWithChildren) {
 }
 
 // creacion del contexto con valor inicial null
-export const ThemeContext = createContext<ThemeContextType | null>(null);
+//export const ThemeContext = createContext<ThemeContextType | null>(null);
 
