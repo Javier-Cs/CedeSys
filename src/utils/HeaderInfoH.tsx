@@ -1,4 +1,4 @@
-import { CalendarDays, Clock3 } from "lucide-react";
+import { Clock3 } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function HeaderInfo() {
@@ -24,10 +24,8 @@ export default function HeaderInfo() {
   }).format(dateTime);
 
   return (
-    <div className="flex items-center gap-4 border border-slate-200/70 dark:border-slate-700/70 bg-white dark:bg-slate-900/60 backdrop-blur-md px-5 py-3 shadow-sm">
-      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400">
-        <CalendarDays size={22} />
-      </div>
+    <div className="flex items-center  bg-cyan-100 dark:bg-slate-900/60 backdrop-blur-md px-5 ">
+      
 
       <div className="flex flex-col">
         <span className="capitalize text-1xl text-slate-900 dark:text-slate-200">
