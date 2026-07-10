@@ -25,6 +25,8 @@ export default function NavbarContainer(){
                 />
                 <span className="text-sm text-slate-200">Jhordi</span>
                 </div>
+
+                {/* aqui se define el tema, por defecto toma el tema del systema*/} 
                 <ThemeToggle />
             </div>
         </nav>

@@ -14,6 +14,10 @@ export function ThemeProvider({children}: PropsWithChildren) {
         return savedTheme ?? "system";
     });
 
+    useEffect(() => {
+        console.log("Theme:", theme);
+    }, [theme]);
+
 
     // funcion para obtener el tema del sistema operativo
     function getSystemDark() { 
@@ -37,6 +41,7 @@ export function ThemeProvider({children}: PropsWithChildren) {
 
     // creacion de toggleTheme para cambiar el tema de light a dark y viceversa
     const toggleTheme = useCallback(() => {
+        console.log("toggle", theme);
         switch(theme){
             case "light":
                 setTheme("dark");

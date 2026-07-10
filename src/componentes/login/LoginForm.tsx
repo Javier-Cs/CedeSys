@@ -12,7 +12,8 @@ export default function LoginForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-4 p-8 w-80 bg-black text-white"
+      className="flex flex-col gap-4 p-8 w-80 bg-black dark:bg-emerald-600
+dark:text-white text-white"
     >
       <h2 className="text-xl font-semibold text-center">Iniciar sesión</h2>
 
