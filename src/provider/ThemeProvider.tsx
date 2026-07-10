@@ -30,7 +30,9 @@ export function ThemeProvider({children}: PropsWithChildren) {
     // funcion para aplicar el tema dark o light al html
     const applyTheme = useCallback(() =>{
         document.documentElement.classList.toggle("dark", isDark);
-    }, []);
+
+        ///////////--------------------
+    }, [isDark]);
     
 
     // creacion de toggleTheme para cambiar el tema de light a dark y viceversa
