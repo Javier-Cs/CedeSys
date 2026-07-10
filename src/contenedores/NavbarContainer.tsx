@@ -9,7 +9,10 @@ export default function NavbarContainer(){
             <div className="flex items-center gap-3">
                 <img src="/favicon.svg" alt="Logo" className="h-10 w-auto" />
                 {/* Fecha y hora */}
-                <HeaderInfo/>
+                <div className="hidden md:block">
+                    <HeaderInfo/>
+                </div>
+                
             </div>
 
             {/* Usuario + Tema */}
