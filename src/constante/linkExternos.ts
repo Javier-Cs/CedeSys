@@ -1,0 +1,1 @@
+export const PAGINA_WEB = "https://legumfrutsa.com/";

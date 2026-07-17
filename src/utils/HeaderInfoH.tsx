@@ -24,21 +24,21 @@ export default function HeaderInfo() {
   }).format(dateTime);
 
   return (
-    <div className="flex items-center  bg-cyan-100 dark:bg-slate-900/60 backdrop-blur-md px-5 ">
+    <div className="flex items-center  bg-emerald-600 dark:bg-slate-900/60 backdrop-blur-md px-5 ">
       
 
       <div className="flex flex-col">
-        <span className="capitalize text-1xl text-slate-900 dark:text-slate-200">
+        <span className="capitalize text-1xl text-slate-100 dark:text-slate-200">
           {date}
         </span>
 
         <div className="flex items-center gap-2">
           <Clock3
             size={18}
-            className="text-slate-900 dark:text-slate-500"
+            className="text-slate-100 dark:text-slate-100"
           />
 
-          <span className="font-mono text-3xl font-bold tracking-wider text-slate-800 dark:text-white">
+          <span className="font-mono text-3xl font-bold tracking-wider text-slate-100 dark:text-white">
             {time}
           </span>
         </div>

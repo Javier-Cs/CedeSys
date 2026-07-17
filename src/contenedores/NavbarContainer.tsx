@@ -4,7 +4,7 @@ import ThemeToggle from "@/utils/ThemeToggle";
 export default function NavbarContainer(){
 
     return(
-        <nav className="flex items-center justify-between w-full px-6 py-2 bg-cyan-100 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-700 shadow-sm">
+        <nav className="flex items-center justify-between w-full px-6 py-2 bg-emerald-600 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-700 shadow-sm">
             {/* Logo */}
             <div className="flex items-center gap-3">
                 <img src="/favicon.svg" alt="Logo" className="h-10 w-auto" />
@@ -17,6 +17,7 @@ export default function NavbarContainer(){
 
             {/* Usuario + Tema */}
             <div className="flex items-center gap-4">
+                {/* Usuario + Tema 
                 <div className="flex items-center gap-2">
                 <img
                     src="/avatar.png"
@@ -24,7 +25,7 @@ export default function NavbarContainer(){
                     className="h-10 w-10 rounded-full border border-slate-600"
                 />
                 <span className="text-sm text-slate-200">Jhordi</span>
-                </div>
+                </div>*/}
 
                 {/* aqui se define el tema, por defecto toma el tema del systema*/} 
                 <ThemeToggle />
